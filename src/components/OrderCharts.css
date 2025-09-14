@@ -1,0 +1,142 @@
+/* Add to your existing CSS */
+
+/* Elegant Chart Styling */
+.elegant-chart-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .custom-tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    font-size: 0.875rem;
+  }
+  
+  .tooltip-header {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2d3748;
+  }
+  
+  .tooltip-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .tooltip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .tooltip-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  
+  .tooltip-label {
+    color: #718096;
+    font-weight: 500;
+  }
+  
+  .tooltip-value {
+    color: #2d3748;
+    font-weight: 600;
+  }
+  
+  .tooltip-trend {
+    font-weight: 600;
+  }
+  
+  .tooltip-trend.positive {
+    color: #16a34a;
+  }
+  
+  .tooltip-trend.negative {
+    color: #dc2626;
+  }
+  
+  /* Custom Legend */
+  .custom-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  .legend-label {
+    color: #4a5568;
+    font-weight: 500;
+    flex: 1;
+  }
+  
+  .legend-value {
+    color: #2d3748;
+    font-weight: 600;
+  }
+  
+  /* Chart Placeholder */
+  .chart-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    color: #718096;
+    font-size: 0.875rem;
+  }
+  
+  .placeholder-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+  }
+  
+  /* Advanced Insights */
+  .advanced-insights {
+    margin-top: 2rem;
+  }
+  
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .chart-subtitle {
+    font-size: 0.75rem;
+    color: #718096;
+    margin-top: 0.25rem;
+  }
+  
+  /* Responsive Chart Improvements */
+  @media (max-width: 768px) {
+    .custom-tooltip {
+      font-size: 0.75rem;
+      padding: 0.75rem;
+    }
+    
+    .legend-item {
+      font-size: 0.75rem;
+    }
+  }

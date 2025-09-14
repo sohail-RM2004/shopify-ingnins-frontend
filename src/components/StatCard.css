@@ -1,0 +1,126 @@
+/* frontend/src/components/StatCard.css */
+
+.stats-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.stats-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stats-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.stats-card-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.stats-card-trend {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.stats-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stats-card-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stats-card-value {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a202c;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .stats-card {
+    padding: 1.25rem;
+  }
+  
+  .stats-card-value {
+    font-size: 1.75rem;
+  }
+}
+
+/* Add this to your StatCard.css or create a new CSS file */
+
+.animated-number {
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.animated-number.animating {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.stats-card-value .animated-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+/* Optional: Add a subtle pulse effect during animation */
+@keyframes numberPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animated-number.animating {
+  animation: numberPulse 0.6s ease-in-out;
+}
+
+/* Stagger the animations for a wave effect */
+.stats-card:nth-child(1) .animated-number { animation-delay: 0ms; }
+.stats-card:nth-child(2) .animated-number { animation-delay: 100ms; }
+.stats-card:nth-child(3) .animated-number { animation-delay: 200ms; }
+.stats-card:nth-child(4) .animated-number { animation-delay: 300ms; }
+.stats-card:nth-child(5) .animated-number { animation-delay: 400ms; }
+.stats-card:nth-child(6) .animated-number { animation-delay: 500ms; }
