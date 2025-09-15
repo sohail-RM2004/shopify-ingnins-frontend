@@ -69,7 +69,7 @@ The application follows a decoupled architecture where the frontend and backend 
 ### Data Ingestion Layer
 ![Part 1 - Ingestion](https://github.com/user-attachments/assets/814250ce-9791-4770-9b77-102d76bddead)
 
-### Insights Dashboard
+### Data Insights Layer
 ![Part 2 - Insights](https://github.com/user-attachments/assets/ab3cb5c9-4ae2-4728-a957-b2d9d810d232)
 
 ---
@@ -167,6 +167,7 @@ The application follows a decoupled architecture where the frontend and backend 
 ### ✅ Assumptions
 - Each tenant is managed by a single user account.
 - Webhook security is validated using Shopify’s shared secret.
+- Webhooks give real-time data
 
 ### ⚠ Limitations
 - Date range filtering applies mainly to order-based metrics.
@@ -176,9 +177,10 @@ The application follows a decoupled architecture where the frontend and backend 
 
 ## 📈 Next Steps to Productionize
 
-- **Enhanced Security:** Encrypt sensitive data like API tokens and implement rate limiting.
 - **Scalability:** Use Redis for caching and introduce background job queues for webhook processing.
-- **User Management:** Allow multiple users with role-based permissions under a single tenant.
+- **Custom Features** Implement cart abandonment tracking.
+- **Customer Management:** Allow same customers for multiple tenants.
+- **Data Sync:** Can be further improved by using websockets.
 - **Robust Testing:** Add unit and integration tests for business logic and API endpoints.
 
 ---
@@ -247,7 +249,12 @@ npm run dev
 ```
 ---
 
-username - ```foodstoreman@example.com```
+username - foodstoreman@example.com
 
 password - ```foodstore12```
 
+---
+
+Contact - m.sohailrehan@gmail.com
+
+Made with ♡ by Sohail
