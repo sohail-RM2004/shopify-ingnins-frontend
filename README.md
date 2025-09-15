@@ -1,162 +1,243 @@
-please make a note that since render takes time to scale up our website, it might take sometime to login. Since this project is User Authenticated, I for review purpose of recruiter am providing the username and password of the store manager to log into the shopify insights of a store here in my github readme until they review it.
+# 📊 Argos BI – Shopify Insights Dashboard
 
-Argos BI is a full-stack, multi-tenant web application that connects to Shopify stores, ingests their data in real-time via webhooks, and provides a rich analytics dashboard to visualize key business metrics.
+> **Note:** Since Render takes time to scale up the website, it might take a while to log in. As this project is user-authenticated, I’m providing the username and password of the store manager here for recruiter review purposes. Please use these credentials to log into the Shopify Insights dashboard while reviewing this project.
 
-The High-Level Architecture
+---
 
-The application is built on a decoupled frontend/backend architecture. The React frontend is a standalone SPA that communicates with the Node.js backend via a REST API. The backend handles all business logic, database interactions, and secure communication with the Shopify API. Data is pushed from Shopify to our backend in real-time using Webhooks.
+## 🚀 Project Overview
 
-<img width="1147" height="802" alt="HIGHlarchitectrue" src="https://github.com/user-attachments/assets/4f42be07-283c-4f30-867b-4d25f7d5b2d9" />
+**Argos BI** is a full-stack, multi-tenant web application that connects to Shopify stores, ingests their data in real-time via webhooks, and provides a rich analytics dashboard to visualize key business metrics.
 
-User: Interacts with the Frontend React based App.
+---
 
-React App (Render Static Pages): Makes API calls to the Backend for data.
+## ✅ Core Features
 
-Backend API (Render): Authenticates users, processes requests, and queries the database.
+- **Secure Multi-Tenant Authentication**  
+  Onboard multiple Shopify stores with isolated data and user accounts.
 
-Database (MySQL on GCP): Stores all tenant, user, and Shopify data.
+- **Real-Time Data Ingestion**  
+  Sync orders, products, and customers using Shopify Webhooks.
 
-Shopify: Pushes real-time updates (order creation/updation, customer creation/updation, product creation/updation etc) to the Backend API via Webhooks.
+- **Comprehensive Insights Dashboard**  
+  Interactive charts and KPIs to monitor business health.
 
+- **Dynamic Date Range Filtering**  
+  Filter metrics and charts using a global date picker.
 
-Here is how the Project is divided.
+- **Rich Data Visualizations**  
+  Includes AOV, CLV, customer segmentation, time-series charts, and more.
 
-<img width="1781" height="625" alt="part1ingestion" src="https://github.com/user-attachments/assets/814250ce-9791-4770-9b77-102d76bddead" />
+- **Advanced Analytics**  
+  Tracks top-selling products by revenue and identifies abandoned checkouts.
 
+---
 
-<img width="1481" height="692" alt="part2insights" src="https://github.com/user-attachments/assets/ab3cb5c9-4ae2-4728-a957-b2d9d810d232" />
+## 🛠 Tech Stack
 
+- **Frontend:** React, Vite, Recharts, Axios, react-datepicker  
+- **Backend:** Node.js, Express.js  
+- **Database:** MySQL on Google Cloud Platform  
+- **ORM:** Prisma  
+- **Authentication:** JWT (JSON Web Tokens)  
+- **Deployment:** Backend on Render, Frontend on Netlify, Database on GCP
 
+---
 
-API ENDPOINTS TABLE.
+## 📐 High-Level Architecture
 
-Schema-
+The application follows a decoupled architecture where the frontend and backend communicate via REST APIs. Shopify pushes updates to the backend through webhooks, while users interact with a React-based interface.
 
-tenants  {
+![High-Level Architecture](https://github.com/user-attachments/assets/4f42be07-283c-4f30-867b-4d25f7d5b2d9)
 
-  id string pk
-  
-  shopUrl string
-  
-  apiToken string
-  
-  webhookSecret string
-  
-  createdAt timestamp
-  
-}
+### Flow:
+- **User** → React Frontend → API Requests → Node.js Backend → MySQL on GCP  
+- **Shopify** → Webhooks → Node.js Backend → Database updates
 
+---
 
-users  {
+## 🔍 Project Division
 
-  id string pk
-  
-  email string
-  
-  password string
-  
-  createdAt timestamp
-  
-  tenantId string
-  
-}
+### Data Ingestion Layer
+![Part 1 - Ingestion](https://github.com/user-attachments/assets/814250ce-9791-4770-9b77-102d76bddead)
 
+### Insights Dashboard
+![Part 2 - Insights](https://github.com/user-attachments/assets/ab3cb5c9-4ae2-4728-a957-b2d9d810d232)
 
-customers  {
+---
 
-  id string pk
-  
-  shopifyCustomerId string
-  
-  firstName string
-  
-  lastName string
-  
-  email string
-  
-  city string
-  
-  province string
-  
-  country string
-  
-  totalSpent number
-  
-  ordersCount number
-  
-  createdAt timestamp
-  
-  updatedAt timestamp
-  
-  tenantId string
-  
-}
+## 📂 API Endpoints
 
-products  {
-  id string pk
-  shopifyProductId string
-  title string
-  vendor string
-  createdAt timestamp
-  updatedAt timestamp
-  tenantId string
-}
+| Endpoint                        | Method | Description                                      |
+| -------------------------------- | ------ | ------------------------------------------------ |
+| `/api/auth/register`            | POST   | Register a new tenant and user                   |
+| `/api/auth/login`               | POST   | Authenticate a user and return a JWT             |
+| `/api/insights/stats`           | GET    | Get key stats (revenue, orders) for a date range  |
+| `/api/insights/orders-over-time`| GET    | Get order count grouped by date for charts       |
+| `/api/insights/top-customers`   | GET    | Get top 5 customers by all-time spend            |
+| `/api/insights/top-products`    | GET    | Get top 5 products by revenue                   |
+| `/api/insights/revenue-by-region`| GET   | Aggregate revenue by country                    |
+| `/api/insights/customer-segments`| GET   | Get counts of new vs. returning customers        |
+| `/api/webhooks/shopify`        | POST   | Public endpoint for all Shopify webhooks         |
 
+---
 
-orders  {
+## 🗃 Database Schema
 
-  id string pk
-  
-  shopifyOrderId string
-  
-  shopifyCheckoutId string
-  
-  totalPrice number
-  
-  orderNumber number
-  
-  processedAt timestamp
-  createdAt timestamp
-  
-  updatedAt timestamp
-  
-  tenantId string
-  
-  customerId string
-  
-}
+### tenants
+- `id` (PK)  
+- `shopUrl`  
+- `apiToken`  
+- `webhookSecret`  
+- `createdAt`
 
+### users
+- `id` (PK)  
+- `email`  
+- `password`  
+- `createdAt`  
+- `tenantId` (FK)
 
-line_items {
-  id string pk
-  
-  quantity number
-  
-  price number
-  
-  orderId string
-  
-  productId string
-  
-}
+### customers
+- `id` (PK)  
+- `shopifyCustomerId`  
+- `firstName`  
+- `lastName`  
+- `email`  
+- `city`  
+- `province`  
+- `country`  
+- `totalSpent`  
+- `ordersCount`  
+- `createdAt`  
+- `updatedAt`  
+- `tenantId` (FK)
 
+### products
+- `id` (PK)  
+- `shopifyProductId`  
+- `title`  
+- `vendor`  
+- `createdAt`  
+- `updatedAt`  
+- `tenantId` (FK)
 
-# Relationships
+### orders
+- `id` (PK)  
+- `shopifyOrderId`  
+- `shopifyCheckoutId`  
+- `totalPrice`  
+- `orderNumber`  
+- `processedAt`  
+- `createdAt`  
+- `updatedAt`  
+- `tenantId` (FK)  
+- `customerId` (FK)
 
-users.tenantId > tenants.id
+### line_items
+- `id` (PK)  
+- `quantity`  
+- `price`  
+- `orderId` (FK)  
+- `productId` (FK)
 
-customers.tenantId > tenants.id
+### Relationships
+- `users.tenantId` → `tenants.id`  
+- `customers.tenantId` → `tenants.id`  
+- `products.tenantId` → `tenants.id`  
+- `orders.tenantId` → `tenants.id`  
+- `orders.customerId` → `customers.id`  
+- `line_items.orderId` → `orders.id`  
+- `line_items.productId` → `products.id`
 
-products.tenantId > tenants.id
+![ER Diagram](https://github.com/user-attachments/assets/54fd9ddb-de8d-43b8-886f-b51e0545de57)
 
-orders.tenantId > tenants.id
+---
 
-orders.customerId > customers.id
+## ⚙ Assumptions & Limitations
 
-line_items.orderId > orders.id
+### ✅ Assumptions
+- Each tenant is managed by a single user account.
+- Webhook security is validated using Shopify’s shared secret.
 
-line_items.productId > products.id
+### ⚠ Limitations
+- Date range filtering applies mainly to order-based metrics.
+- Metrics like “Top Customers” reflect lifetime values and are not date-filtered.
 
+---
 
-<img width="1306" height="806" alt="erdiagram" src="https://github.com/user-attachments/assets/54fd9ddb-de8d-43b8-886f-b51e0545de57" />
+## 📈 Next Steps to Productionize
+
+- **Enhanced Security:** Encrypt sensitive data like API tokens and implement rate limiting.
+- **Scalability:** Use Redis for caching and introduce background job queues for webhook processing.
+- **User Management:** Allow multiple users with role-based permissions under a single tenant.
+- **Robust Testing:** Add unit and integration tests for business logic and API endpoints.
+
+---
+
+## 📂 Screenshots
+
+- ✅ High-Level Architecture  
+- ✅ Data Ingestion Layer  
+- ✅ Insights Layers
+- ✅ ER Diagram
+
+---
+
+### 📥 Clone the Repository
+
+```bash
+git clone [your-repo-url]
+cd [your-project-folder]
+🖥 Setup Backend
+Navigate to the backend folder:
+```
+```bash
+Copy code
+cd backend
+Install dependencies:
+```
+```bash
+Copy code
+npm install
+```
+```Create a .env file and add the following environment variables:
+
+env
+Copy code
+DATABASE_URL="your-database-url"
+JWT_SECRET="your-jwt-secret"
+Run database migrations:
+```
+```bash
+Copy code
+npx prisma migrate dev
+Start the backend server:
+```
+```bash
+Copy code
+npm start
+🌐 Setup Frontend
+Navigate to the frontend folder:
+```
+```bash
+Copy code
+cd ../frontend
+Install dependencies:
+```
+```bash
+Copy code
+npm install
+Create a .env.local file and add the API base URL:
+
+env
+Copy code
+VITE_API_BASE_URL="http://localhost:5001/api"
+Start the development server:
+```
+```bash
+Copy code
+npm run dev
+```
+---
+
 
