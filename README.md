@@ -1,12 +1,21 @@
 # 📊 Argos BI – Shopify Insights Dashboard
 
-> **Note:** Since Render takes time to scale up the website, it might take a while to log in. As this project is user-authenticated, I’m providing the username and password of the store manager here for recruiter review purposes. Please use these credentials to log into the Shopify Insights dashboard while reviewing this project.
+> **Note:** Since Render takes time to scale up the website, it might take a while to log in. As this project is user-authenticated, I’m providing the username and password of the store manager here for recruiter review purposes. Please use these credentials to log into the Shopify Insights dashboard while reviewing this project. [Given at the end of this readme]
 
 ---
 
 ## 🚀 Project Overview
 
-**Argos BI** is a full-stack, multi-tenant web application that connects to Shopify stores, ingests their data in real-time via webhooks, and provides a rich analytics dashboard to visualize key business metrics.
+<i>**ShopifyInsights.com**</i> or I would call it as **Argos BI** is a full-stack, multi-tenant web application that connects to Shopify stores, ingests their data in real-time via webhooks, and provides a rich analytics dashboard to visualize key business metrics.
+
+Live Project: https://shopifyinsights.onrender.com
+
+Backend API: https://shopify-ingnins-backend.onrender.com
+
+Backend Repo: https://github.com/sohail-RM2004/shopify-ingnins-backend
+
+Demo Video: https://drive.google.com/file/d/1PGl5o7gW4M_hNCYYnsHnNGCNQeBWl_KK/view
+
 
 ---
 
@@ -182,62 +191,63 @@ The application follows a decoupled architecture where the frontend and backend 
 - ✅ ER Diagram
 
 ---
+## 🛠 Project Setup
 
 ### 📥 Clone the Repository
 
 ```bash
-git clone [your-repo-url]
-cd [your-project-folder]
+git clone [repo-url]
+cd [project-folder]
+```
 🖥 Setup Backend
 Navigate to the backend folder:
-```
 ```bash
-Copy code
 cd backend
-Install dependencies:
 ```
+Install dependencies:
 ```bash
-Copy code
 npm install
 ```
-```Create a .env file and add the following environment variables:
+
+Create a .env file and add the following environment variables:
 
 env
-Copy code
+```
 DATABASE_URL="your-database-url"
 JWT_SECRET="your-jwt-secret"
+```
 Run database migrations:
-```
+
 ```bash
-Copy code
 npx prisma migrate dev
-Start the backend server:
 ```
+Start the backend server:
 ```bash
-Copy code
 npm start
+```
 🌐 Setup Frontend
 Navigate to the frontend folder:
-```
 ```bash
-Copy code
 cd ../frontend
+```
 Install dependencies:
-```
-```bash
-Copy code
-npm install
-Create a .env.local file and add the API base URL:
 
-env
-Copy code
-VITE_API_BASE_URL="http://localhost:5001/api"
-Start the development server:
-```
 ```bash
-Copy code
+npm install
+```
+Create a .env.local file and add the API base URL:
+env
+```
+VITE_API_BASE_URL="http://localhost:5001/api"
+```
+
+Start the development server:
+```bash
 npm run dev
 ```
 ---
 
+username - ```foodstoreman@example.com```
+
+password - ```foodstore12```
 
