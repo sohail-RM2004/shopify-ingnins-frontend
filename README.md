@@ -1,3 +1,5 @@
+please make a note that since render takes time to scale up our website, it might take sometime to login. Since this project is User Authenticated, I for review purpose of recruiter am providing the username and password of the store manager to log into the shopify insights of a store here in my github readme until they review it.
+
 Argos BI is a full-stack, multi-tenant web application that connects to Shopify stores, ingests their data in real-time via webhooks, and provides a rich analytics dashboard to visualize key business metrics.
 
 The High-Level Architecture
